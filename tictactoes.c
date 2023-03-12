@@ -19,7 +19,7 @@ int init() {
 	return 0;
 	}
 
-//affiche ma foie
+// affiche la grille
 void affichage(int grille) {
 	int and;
 	for (int i=0 ; i<9 ; i++) {
@@ -44,27 +44,27 @@ void affichage(int grille) {
 	printf("\n");
 }
 
-//verifie si la grille est encore remplissable
+// verifie si la grille est encore remplissable
 int verif(int grille) {
 	for (int i=0 ; i<9 ; i++) {
 		if ((grille & 3) == 0) {
-			return 0;//on peut encore jouer
+			return 0;// on peut encore jouer
 		}
 		grille = grille>>2;
 	}
-	return 1;//on ne peut plus jouer la grille est remplie
+	return 1;// on ne peut plus jouer la grille est remplie
 }
 
-//verifie si le coup est jouable
+// verifie si le coup est jouable
 int valid(int grille,int coup) {
 	grille = grille>>(coup+coup);
 	if ((grille & 3) == 0) {
-		return 1;//la case n'a pas été joue
+		return 1;// la case n'a pas été joue
 	}
-	return 0;//la case à deja été joue
+	return 0;// la case à deja été joue
 }
 
-//modifie la gille en plaçant un pion
+// modifie la gille en plaçant un pion
 int jeu(int grille,int coup,int joueur) {
 	int pion;
 	if (joueur == HUMAIN) {
@@ -77,20 +77,20 @@ int jeu(int grille,int coup,int joueur) {
 	return grille;
 }
 
-//regarde si dans la grille il y a un gagnant
+// regarde si dans la grille il y a un gagnant
 int win(int grille) {
 	for (int i=0 ; i<8 ; i++) {
 		if ((combinaisonX[i] & grille) == combinaisonX[i]) {
-			return scoreX;//renvoi -1
+			return scoreX;// renvoi -1
 			}
 		else if ((combinaisonO[i] & grille) == combinaisonO[i]) {
-			return scoreO;//renvoi 1,
+			return scoreO;// renvoi 1,
 			}
 	}
 	return 0;
 }
 
-//renvoie un score
+// renvoie un score
 int minmaxAlt(int grille,int tour) {
 	compteurMinmax ++;
 	int minmax = 0;
@@ -102,7 +102,7 @@ int minmaxAlt(int grille,int tour) {
 	if ((resultat == scoreX) || (resultat == scoreO)) {
 		return resultat;
 	}
-	//tour de l'ordi, max
+	// tour de l'ordi, max
 	if (tour == ORDI) {
 		minmax = -10000;
 		for (int i = 0 ; i<9 ; i++) {
@@ -114,7 +114,7 @@ int minmaxAlt(int grille,int tour) {
 		}
 		return minmax;
 	}
-	//tour du joueur, min
+	// tour du joueur, min
 	else {
 		minmax = 10000;
 		for (int i = 0 ; i<9 ; i++) {
@@ -128,7 +128,7 @@ int minmaxAlt(int grille,int tour) {
 	}
 }
 
-//renvoie un coup
+// renvoie un coup
 int minmaxDebut(int grille) {
 	int maxScore = -10000;
 	int meilleurCoup;
@@ -145,7 +145,7 @@ int minmaxDebut(int grille) {
 	return meilleurCoup;
 }
 
-//l'ordi joue la premiere case vide
+// l'ordi joue la premiere case vide
 int debile(int grille) {
 	int j1;
 	for (int i = 0 ; i<9 ; i++) {
@@ -158,12 +158,12 @@ int debile(int grille) {
 }
 
 int ordi(int grille) {
-	//int j1 = debile(grille);
+	// int j1 = debile(grille);
 	int coup;
 	coup = minmaxDebut(grille);
 	affichage(grille);
 	grille = jeu(grille,coup,1);
-	printf("voici le minmax : %d\n",compteurMinmax);//on affiche le compteur de minmax aha <<-- voici le minmax
+	printf("voici le minmax : %d\n",compteurMinmax);// on affiche le compteur de minmax aha <<-- voici le minmax
 	return grille;
 }
 
