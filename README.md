@@ -34,8 +34,10 @@ Cette fonction utilise l'algorithme Minimax pour déterminer le meilleur coup à
 
 ## Installation
 
-Pour installer le projet il suffit de cloner le projet et de lancer `tictactoe.exe`
+Pour compiler le programme, il faut utiliser la commande suivante:
 
-## Utilisation
+    gcc -o tictactoe tictactoe.cpp
 
-Pour jouer il suffit de lancer le programme et de suivre les instructions.
+Pour lancer le programme, il faut utiliser la commande suivante:
+    
+        ./tictactoe
