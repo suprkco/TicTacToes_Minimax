@@ -32,10 +32,6 @@ Cette fonction est l'algorithme Minimax utilisé pour déterminer le meilleur co
 - `minmaxDebut(int grille)`
 Cette fonction utilise l'algorithme Minimax pour déterminer le meilleur coup à jouer pour l'ordinateur en explorant tous les coups possibles et en évaluant leur score à l'aide de la fonction minmaxAlt().
 
-## Conclusion
-
-Ce programme de Tic Tac Toe utilise une méthode de recherche de l'arbre de jeu appelée algorithme Minimax pour déterminer le meilleur coup à jouer pour l'ordinateur. Le programme est écrit en C et utilise plusieurs fonctions pour gérer la grille, les coups et les scores. Le résultat est un jeu de Tic Tac Toe jouable contre l'ordinateur.
-
 ## Installation
 
 Pour installer le projet il suffit de cloner le projet et de lancer `tictactoe.exe`
